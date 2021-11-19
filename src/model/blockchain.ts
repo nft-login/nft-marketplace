@@ -4,6 +4,7 @@ export interface Blockchain {
     contractAddress(): Promise<string>;
     loadContract(contractAddress: string) : Promise<void>;
     account(): Promise<string>;
+    balance(): Promise<string>;
     nftName(): Promise<string>;
     nftSymbol(): Promise<string>;
 }

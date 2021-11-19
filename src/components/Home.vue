@@ -16,7 +16,16 @@ import Account from "./Account.vue";
       </div>
     </template>
   </Suspense>
-  <Account />
+  <Suspense>
+    <template #default>
+      <Account />
+    </template>
+    <template #fallback>
+      <div style="text-align: center; padding-top: 20px">
+        <Loading />
+      </div>
+    </template>
+  </Suspense>
 </template>
 
 <style scoped>

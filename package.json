@@ -10,7 +10,6 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@metamask/detect-provider": "^1.2.0",
     "@openzeppelin/contracts": "^4.4.0-rc.1",
     "@truffle/hdwallet-provider": "^1.7.0",
     "buffer": "^6.0.3",

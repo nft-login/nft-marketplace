@@ -1,5 +1,4 @@
 import { ethers } from "ethers";
-import detectEthereumProvider from "@metamask/detect-provider";
 
 import { Blockchain } from "../model/blockchain";
 import * as EarlyAccessGame from "../abis/EarlyAccessGame.json";
@@ -34,7 +33,8 @@ export class Web3Blockchain implements Blockchain {
     }
 
     init = async () => {
-        this.provider = (await detectEthereumProvider()) as Provider;
+        this.provider = window.ethereum;
+        const accounts = await  window.ethereum?.request({ method: "eth_requestAccounts" });
         if (this.provider) {
             console.log("Ethereum successfully detected!");
         } else {
@@ -43,7 +43,7 @@ export class Web3Blockchain implements Blockchain {
     }
 
     loadContract = async (contractAddress: string) => {
-        const accounts = await  window.ethereum.request({ method: "eth_requestAccounts" });
+        const accounts = await  window.ethereum?.request({ method: "eth_requestAccounts" });
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         console.log(contractAddress, accounts, provider);
         this.contract = await new ethers.Contract(contractAddress, EarlyAccessGame.abi, provider)
@@ -72,6 +72,14 @@ export class Web3Blockchain implements Blockchain {
         const accounts = await this.provider?.request({ method: "eth_requestAccounts" });
         return accounts[0];
     }
+
+    balance = async () => {
+        const balance = await this.provider?.request({
+            method: "eth_getBalance",
+            params: [await this.account(), "latest"],
+          });
+        return ethers.utils.formatUnits(balance, "ether");
+      };
 
     nftName = async () => {
         console.log(this.contract)
