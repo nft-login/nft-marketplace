@@ -7,6 +7,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@metamask/detect-provider": "^1.2.0",
     "vue": "^3.2.16",
     "vue-router": "4",
     "vue-spinner": "^1.0.4"
