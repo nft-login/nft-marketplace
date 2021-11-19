@@ -1,0 +1,31 @@
+on:
+  push:
+    branches:
+      - main
+
+name: CI
+
+jobs:
+  build_web_app:
+    name: Web App
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "16.x"
+      - name: Install node dependencies
+        run: yarn
+      - name: Build App
+        run: PUBLIC_URL=/nft-marketplace yarn build
+      - name: creage gh-pages
+        run: mv dist/ gh-pages/
+
+      - name: Deploy App
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./gh-pages
+          keep_files: true
