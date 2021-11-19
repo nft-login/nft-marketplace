@@ -6,7 +6,7 @@ import { useStore } from "../store";
 
 const store = useStore();
 const provider: any = await detectEthereumProvider();
-var chainId = ref("");
+var chainId = "";
 if (provider) {
   console.log("Ethereum successfully detected!");
   provider.on("accountsChanged", (accounts: string[]) => {
@@ -20,9 +20,9 @@ if (provider) {
     method: "eth_getBalance",
     params: [accounts[0], "latest"],
   });
-  store.commit("setChainId", chainId);
   store.commit("setAccount", accounts[0]);
   store.commit("setBalance", ethers.utils.formatUnits(balance, "ether"));
+  chainId = await store.state.blockchain.chainId();
 } else {
   console.error("Please install MetaMask!");
 }
@@ -31,7 +31,7 @@ if (provider) {
 <template>
   <div v-if="provider">Metamask successfully detected</div>
   <div v-if="!provider">Please install MetaMask!</div>
-  Chain ID: {{ store.state.chainId }}
+  Chain ID: {{ chainId }}
 </template>
 
 <style scoped>

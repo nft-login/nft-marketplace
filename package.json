@@ -1,6 +1,9 @@
 {
   "name": "nft-marketplace",
   "version": "0.0.1",
+  "description": "NFT Marketplace",
+  "author": "chriamue",
+  "homepage": "https://github.com/nft-login/nft-marketplace",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",

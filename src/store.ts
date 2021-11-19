@@ -1,10 +1,13 @@
 import { InjectionKey } from 'vue'
 import { createStore, useStore as baseUseStore, Store, MutationTree } from 'vuex'
+import { Blockchain } from './model/blockchain';
+import { Web3Blockchain } from './controller/web3_blockchain';
 
 export interface State {
     account: string;
     balance: number;
-    chainId: string;
+    blockchain: Blockchain;
+    blockchainLoaded: boolean;
 }
 
 const mutations = <MutationTree<State>>{
@@ -14,8 +17,9 @@ const mutations = <MutationTree<State>>{
     setBalance(state, payload) {
         state.balance = payload;
     },
-    setChainId(state, payload) {
-        state.chainId = payload;
+    setBlockchainLoaded(state, payload) {
+        state.blockchainLoaded = payload;
+        state.blockchain = state.blockchain;
     }
 };
 
@@ -25,7 +29,8 @@ export const store = createStore<State>({
     state: {
         account: "",
         balance: 0.0,
-        chainId: "0x0"
+        blockchain: new Web3Blockchain(),
+        blockchainLoaded: false
     },
     mutations: mutations
 })

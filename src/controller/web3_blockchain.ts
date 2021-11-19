@@ -1,0 +1,87 @@
+import { ethers } from "ethers";
+import detectEthereumProvider from "@metamask/detect-provider";
+
+import { Blockchain } from "../model/blockchain";
+import * as EarlyAccessGame from "../abis/EarlyAccessGame.json";
+
+function getContract() {
+    const search = window.location.search;
+    const contract = new URLSearchParams(search).get("contract");
+    console.log("?contract=",contract);
+    return contract;
+}
+
+interface Provider {
+    request: Function;
+    eth: {
+        Contract: Function
+    }
+}
+
+interface NetworkObjects {
+    [keys: string]: {
+        address: string;
+    }
+}
+
+export class Web3Blockchain implements Blockchain {
+
+    provider?: Provider;
+    contract?: any;
+
+    constructor() {
+        this.init();
+    }
+
+    init = async () => {
+        this.provider = (await detectEthereumProvider()) as Provider;
+        if (this.provider) {
+            console.log("Ethereum successfully detected!");
+        } else {
+            console.error("Please install MetaMask!");
+        }
+    }
+
+    loadContract = async (contractAddress: string) => {
+        const accounts = await  window.ethereum.request({ method: "eth_requestAccounts" });
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        console.log(contractAddress, accounts, provider);
+        this.contract = await new ethers.Contract(contractAddress, EarlyAccessGame.abi, provider)
+        console.log(this.contract);
+    };
+
+    chainId = async (): Promise<string> => {
+        return parseInt(await this.provider?.request({
+            method: "eth_chainId",
+        }), 16).toString();
+    };
+
+    contractAddress = async () => {
+        const networkId: string = await this.chainId();
+        let networks: NetworkObjects = EarlyAccessGame.networks as unknown as NetworkObjects;
+        const networkData: any = networks[networkId];
+        if (!networkData) {
+            return false;
+        }
+
+        const contractAddress = getContract() || networkData.address;
+        return contractAddress;
+    };
+
+    account = async () => {
+        const accounts = await this.provider?.request({ method: "eth_requestAccounts" });
+        return accounts[0];
+    }
+
+    nftName = async () => {
+        console.log(this.contract)
+        const name =  await this.contract?.name();
+        //return "name";
+        return name;
+    }
+
+    nftSymbol = async () => {
+        return "symbol";
+        return await this.contract?.symbol({});
+    };
+}
