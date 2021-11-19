@@ -3,6 +3,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import App from './App.vue'
 import Account from './components/Account.vue'
 import About from './components/About.vue'
+import { store, key } from './store'
 
 const routes = [
     {
@@ -18,5 +19,6 @@ const router = createRouter({
 })
 
 const app = createApp(App);
-app.use(router)
-app.mount('#app')
+app.use(router);
+app.use(store, key);
+app.mount('#app');

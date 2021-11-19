@@ -8,9 +8,12 @@
   },
   "dependencies": {
     "@metamask/detect-provider": "^1.2.0",
+    "buffer": "^6.0.3",
+    "ethers": "^5.5.1",
     "vue": "^3.2.16",
     "vue-router": "4",
-    "vue-spinner": "^1.0.4"
+    "vue-spinner": "^1.0.4",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.9.3",

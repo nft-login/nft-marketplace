@@ -2,14 +2,16 @@
 defineProps<{ account: string }>();
 import Metamask from "./Metamask.vue";
 import Loading from "./Loading.vue";
-const setAccount = () => {};
+import { useStore } from "../store";
+const store = useStore();
 </script>
 
 <template>
-  <h1>{{ account }}</h1>
+  <h1>{{ store.state.account }}</h1>
+  <p>Balance {{ store.state.balance }}</p>
   <Suspense>
     <template #default>
-      <Metamask :set-account="setAccount" />
+      <Metamask />
     </template>
     <template #fallback>
       <div style="text-align: center; padding-top: 20px">
