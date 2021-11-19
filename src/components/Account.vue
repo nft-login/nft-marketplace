@@ -1,5 +1,4 @@
 <script setup lang="ts">
-defineProps<{ account: string }>();
 import Metamask from "./Metamask.vue";
 import Loading from "./Loading.vue";
 import { useStore } from "../store";

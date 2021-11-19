@@ -7,8 +7,7 @@ import { store, key } from './store'
 
 const routes = [
     {
-        path: '/', component: Account,
-        props: route => ({ account: route.query.account })
+        path: '/', component: Account
     },
     { path: '/about', component: About },
 ]

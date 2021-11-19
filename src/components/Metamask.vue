@@ -16,7 +16,10 @@ if (provider) {
     method: "eth_chainId",
   });
   const accounts = await provider.request({ method: "eth_requestAccounts" });
-  const balance = await provider.request({ method: "eth_getBalance", params: [accounts[0], 'latest']});
+  const balance = await provider.request({
+    method: "eth_getBalance",
+    params: [accounts[0], "latest"],
+  });
   store.commit("setChainId", chainId);
   store.commit("setAccount", accounts[0]);
   store.commit("setBalance", ethers.utils.formatUnits(balance, "ether"));
