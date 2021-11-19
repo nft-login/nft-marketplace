@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import Loading from  './components/Loading.vue'
+import Footer from "./components/Footer.vue";
 </script>
 
 <template>
-    <router-link to="/">Go to Home</router-link>
-    <router-link to="/about">Go to About</router-link>
+  <router-link to="/">Go to Home</router-link>
+  <router-link to="/about">Go to About</router-link>
   <img alt="Vue logo" src="./assets/logo.png" />
   <router-view></router-view>
+  <Footer />
 </template>
 
 <style>
