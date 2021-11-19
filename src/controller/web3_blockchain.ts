@@ -103,4 +103,8 @@ export class Web3Blockchain implements Blockchain {
     baseURI = async () => {
         return await this.contract.baseURI();
     };
+
+    tokenCount = async () => {
+        return (await this.contract.totalSupply()).toNumber();
+    };
 }
