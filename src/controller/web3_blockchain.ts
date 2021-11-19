@@ -99,4 +99,8 @@ export class Web3Blockchain implements Blockchain {
         let totalTokensOwnedByAccount = await this.contract?.balanceOf(account);
         return totalTokensOwnedByAccount.toNumber();
     };
+
+    baseURI = async () => {
+        return await this.contract.baseURI();
+    };
 }

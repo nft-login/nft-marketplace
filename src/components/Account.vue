@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Loading from "./Loading.vue";
 import { useStore } from "../store";
 const store = useStore();
 const account = await store.state.blockchain.account();

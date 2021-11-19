@@ -13,25 +13,35 @@ store.state.blockchain.init().then(async () => {
 </script>
 
 <template>
-  <router-link to="/">Go to Home</router-link>
-  <router-link to="/about">Go to About</router-link>
-  <Loading v-if="!store.state.blockchainLoaded" />
-  <div v-if="store.state.blockchainLoaded">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <router-view></router-view>
-  </div>
-  <Suspense>
-    <template #default>
-      <Metamask />
-    </template>
-    <template #fallback>
-      <div style="text-align: center; padding-top: 20px">
-        <Loading />
-        Loading please wait ...
+  <div class="row">
+    <div class="col-12">
+      <div class="navbar navbar-expand-lg navbar-light bg-light">
+        <router-link to="/" class="btn btn-info">Home</router-link>
+        <router-link to="/about" class="btn btn-info">About</router-link>
       </div>
-    </template>
-  </Suspense>
-  <Footer />
+    </div>
+
+    <div class="col-12 bg-light border p-3">
+      <Loading v-if="!store.state.blockchainLoaded" />
+      <div v-if="store.state.blockchainLoaded">
+        <router-view></router-view>
+      </div>
+      <Suspense>
+        <template #default>
+          <Metamask />
+        </template>
+        <template #fallback>
+          <div style="text-align: center; padding-top: 20px">
+            <Loading />
+            Loading please wait ...
+          </div>
+        </template>
+      </Suspense>
+    </div>
+  </div>
+  <div class="col-12 bg-info">
+    <Footer />
+  </div>
 </template>
 
 <style>
@@ -39,8 +49,10 @@ store.state.blockchain.init().then(async () => {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin: auto;
+  margin-top: 50px;
+  width: 50%;
+  padding: 10px;
 }
 </style>

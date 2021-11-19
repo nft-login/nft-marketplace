@@ -15,10 +15,12 @@
     "@truffle/hdwallet-provider": "^1.7.0",
     "buffer": "^6.0.3",
     "ethers": "^5.5.1",
+    "ipfs-http-client": "^54.0.1",
     "truffle": "^5.4.21",
     "vue": "^3.2.16",
     "vue-router": "4",
     "vue-spinner": "^1.0.4",
+    "vue3-markdown-it": "^1.0.9",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
