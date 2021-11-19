@@ -6,7 +6,7 @@ import * as EarlyAccessGame from "../abis/EarlyAccessGame.json";
 function getContract() {
     const search = window.location.search;
     const contract = new URLSearchParams(search).get("contract");
-    console.log("?contract=",contract);
+    console.log("?contract=", contract);
     return contract;
 }
 
@@ -15,6 +15,7 @@ interface Provider {
     eth: {
         Contract: Function
     }
+    on: Function
 }
 
 interface NetworkObjects {
@@ -34,16 +35,21 @@ export class Web3Blockchain implements Blockchain {
 
     init = async () => {
         this.provider = window.ethereum;
-        const accounts = await  window.ethereum?.request({ method: "eth_requestAccounts" });
+        const accounts = await window.ethereum?.request({ method: "eth_requestAccounts" });
         if (this.provider) {
             console.log("Ethereum successfully detected!");
+            this.provider.on("network", (newNetwork: any, oldNetwork: any) => {
+                if (oldNetwork) {
+                    window.location.reload();
+                }
+            });
         } else {
             console.error("Please install MetaMask!");
         }
     }
 
     loadContract = async (contractAddress: string) => {
-        const accounts = await  window.ethereum?.request({ method: "eth_requestAccounts" });
+        const accounts = await window.ethereum?.request({ method: "eth_requestAccounts" });
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         console.log(contractAddress, accounts, provider);
         this.contract = await new ethers.Contract(contractAddress, EarlyAccessGame.abi, provider)
@@ -77,19 +83,20 @@ export class Web3Blockchain implements Blockchain {
         const balance = await this.provider?.request({
             method: "eth_getBalance",
             params: [await this.account(), "latest"],
-          });
+        });
         return ethers.utils.formatUnits(balance, "ether");
-      };
+    };
 
     nftName = async () => {
-        console.log(this.contract)
-        const name =  await this.contract?.name();
-        //return "name";
-        return name;
+        return await this.contract?.name();
     }
 
     nftSymbol = async () => {
-        return "symbol";
-        return await this.contract?.symbol({});
+        return await this.contract?.symbol();
+    };
+
+    balanceOf = async (account: string) => {
+        let totalTokensOwnedByAccount = await this.contract?.balanceOf(account);
+        return totalTokensOwnedByAccount.toNumber();
     };
 }

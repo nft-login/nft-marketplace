@@ -4,6 +4,7 @@
   "description": "NFT Marketplace",
   "author": "chriamue",
   "homepage": "https://github.com/nft-login/nft-marketplace",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",

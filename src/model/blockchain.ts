@@ -7,4 +7,5 @@ export interface Blockchain {
     balance(): Promise<string>;
     nftName(): Promise<string>;
     nftSymbol(): Promise<string>;
+    balanceOf(account: string): Promise<number>;
 }
