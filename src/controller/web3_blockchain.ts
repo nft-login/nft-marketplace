@@ -162,30 +162,15 @@ export class Web3Blockchain implements Blockchain {
                 );
             await contract.deployed()
             resolve(contract.address)
-            /*
-            .send({ from: account })
-            .on("error", function(error) {
-              reject(error);
-            })
-            .on("confirmation", (confirmationNumber, receipt) => {
-              let newContractInstance = this.contract.clone();
-              newContractInstance.options.address = receipt.contractAddress;
-              console.log(receipt.contractAddress);
-              localStorage.setItem(account, new Date().getTime());
-              var searchParams = new URLSearchParams(window.location.search);
-              searchParams.set("contract", receipt.contractAddress);
-              window.location.search = searchParams.toString();
-              /*this.setState({
-              loading: false,
-              earlyAccessGameContract: newContractInstance,
-            });
-              var newRelativePathQuery =
-                window.location.pathname + "?" + searchParams.toString();
-              window.history.pushState(null, "", newRelativePathQuery);
-              window.location.reload();
-              resolve();
-            });*/
         });
     };
 
+    mint = async (tokenCount: number): Promise<void> => {
+        return new Promise(async (resolve, reject) => {
+            this.contract
+                .mintMultiple(await this.account(), tokenCount, { from: await this.account() }).then((tx: any) => {
+                    tx.wait().then(resolve);
+                }).catch(reject);
+        });
+    };
 }

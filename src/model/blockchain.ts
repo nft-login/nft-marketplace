@@ -17,4 +17,5 @@ export interface Blockchain {
     toggleForSale(tokenId: number): Promise<void>;
     changeTokenPrice(tokenId: number, newPrice: string): Promise<void>;
     deployNew(name: string, symbol: string, tokenURI: string, price: string): Promise<string>;
+    mint(tokenCount: number): Promise<void>;
 }
