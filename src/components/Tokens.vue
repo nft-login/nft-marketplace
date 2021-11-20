@@ -8,11 +8,11 @@ console.log(numTokens);
 </script>
 
 <template>
-  <ul>
-    <li v-for="index in numTokens-1" :key="index">
-      <Token :id="index" />
-    </li>
-  </ul>
+  <div className="d-flex flex-wrap mb-2">
+    <div v-for="index in numTokens" :key="index" className="w-40 p-3 mt-1 border">
+      <Token :id="index - 1" />
+    </div>
+  </div>
 </template>
 
 <style scoped>

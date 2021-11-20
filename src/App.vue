@@ -18,6 +18,7 @@ store.state.blockchain.init().then(async () => {
       <div class="navbar navbar-expand-lg navbar-light bg-light">
         <router-link to="/" class="btn btn-info">Home</router-link>
         <router-link to="/marketplace" class="btn btn-info">Marketplace</router-link>
+        <router-link to="/mytokens" class="btn btn-info">My Tokens</router-link>
         <router-link to="/about" class="btn btn-info">About</router-link>
       </div>
     </div>
