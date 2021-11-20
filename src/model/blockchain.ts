@@ -16,4 +16,5 @@ export interface Blockchain {
     buyToken(tokenId: number, price: string): Promise<void>;
     toggleForSale(tokenId: number): Promise<void>;
     changeTokenPrice(tokenId: number, newPrice: string): Promise<void>;
+    deployNew(name: string, symbol: string, tokenURI: string, price: string): Promise<string>;
 }

@@ -11,4 +11,5 @@ declare module 'vue3-markdown-it';
 
 interface Window {
   ethereum: any;
+  IpfsHttpClient: any;
 }

@@ -1,5 +1,6 @@
 import { ethers, BigNumber } from "ethers";
 
+import { ContractFactory } from 'ethers';
 import { Blockchain } from "../model/blockchain";
 import * as EarlyAccessGame from "../abis/EarlyAccessGame.json";
 
@@ -145,4 +146,46 @@ export class Web3Blockchain implements Blockchain {
             }).catch(reject);
         });
     };
+
+    deployNew = async (name: string, symbol: string, tokenURI: string, price: string): Promise<string> => {
+        return new Promise(async (resolve, reject) => {
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const signer = provider.getSigner()
+            const factory = new ContractFactory(EarlyAccessGame.abi, EarlyAccessGame.bytecode, signer);
+            console.log(this.contract);
+            let contract = await factory
+                .deploy(
+                    name,
+                    symbol,
+                    tokenURI,
+                    ethers.utils.parseEther(price)
+                );
+            await contract.deployed()
+            resolve(contract.address)
+            /*
+            .send({ from: account })
+            .on("error", function(error) {
+              reject(error);
+            })
+            .on("confirmation", (confirmationNumber, receipt) => {
+              let newContractInstance = this.contract.clone();
+              newContractInstance.options.address = receipt.contractAddress;
+              console.log(receipt.contractAddress);
+              localStorage.setItem(account, new Date().getTime());
+              var searchParams = new URLSearchParams(window.location.search);
+              searchParams.set("contract", receipt.contractAddress);
+              window.location.search = searchParams.toString();
+              /*this.setState({
+              loading: false,
+              earlyAccessGameContract: newContractInstance,
+            });
+              var newRelativePathQuery =
+                window.location.pathname + "?" + searchParams.toString();
+              window.history.pushState(null, "", newRelativePathQuery);
+              window.location.reload();
+              resolve();
+            });*/
+        });
+    };
+
 }

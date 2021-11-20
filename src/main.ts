@@ -1,10 +1,11 @@
 import { createApp } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 import App from './App.vue';
-import Home from './components/Home.vue';
+import Home from './pages/Home.vue';
 import Marketplace from './pages/Marketplace.vue';
 import MyTokens from './pages/MyTokens.vue';
-import About from './components/About.vue';
+import Mint from './pages/Mint.vue';
+import About from './pages/About.vue';
 import { store, key } from './store';
 
 const routes = [
@@ -16,6 +17,9 @@ const routes = [
     },
     {
         path: '/mytokens', component: MyTokens
+    },
+    {
+        path: '/mint', component: Mint
     },
     { path: '/about', component: About },
 ]

@@ -7,7 +7,7 @@ const tokenBalance = await store.state.blockchain.balanceOf(account);
 </script>
 
 <template>
-  <h1>{{ account }}</h1>
+  <h2>{{ account }}</h2>
   <p>Balance {{ balance }}</p>
   <p>Tokens {{ tokenBalance }}</p>
 </template>
