@@ -52,10 +52,7 @@ export class Web3Blockchain implements Blockchain {
         const accounts = await window.ethereum?.request({ method: "eth_requestAccounts" });
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner()
-        console.log(signer);
-        console.log(contractAddress, accounts, provider);
         this.contract = await new ethers.Contract(contractAddress, EarlyAccessGame.abi, signer)
-        console.log(this.contract);
     };
 
     chainId = async (): Promise<string> => {
@@ -139,5 +136,13 @@ export class Web3Blockchain implements Blockchain {
             }).catch(reject);
         });
     };
-}
 
+    changeTokenPrice = async (tokenId: number, price: string): Promise<void> => {
+        const newTokenPrice = ethers.utils.parseEther(price);
+        return new Promise(async (resolve, reject) => {
+            this.contract.setPrice(tokenId, newTokenPrice, { from: await this.account() }).then((tx: any) => {
+                tx.wait().then(resolve);
+            }).catch(reject);
+        });
+    };
+}

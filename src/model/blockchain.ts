@@ -13,6 +13,7 @@ export interface Blockchain {
     baseURI(): Promise<string>;
     tokenCount(): Promise<number>;
     getToken(tokenId: number): Promise<Token>;
-    buyToken(tokenId: number, price: string): Promise<void>
-    toggleForSale(tokenId: number): Promise<void>
+    buyToken(tokenId: number, price: string): Promise<void>;
+    toggleForSale(tokenId: number): Promise<void>;
+    changeTokenPrice(tokenId: number, newPrice: string): Promise<void>;
 }

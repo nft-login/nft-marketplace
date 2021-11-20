@@ -15,7 +15,7 @@ const account = await store.state.blockchain.account();
     <p><span className="font-weight-bold">Token Id</span> : {{ id }}</p>
 
     <p>
-      <span className="font-weight-bold">Owned By</span> :
+      <span className="font-weight-bold">Owner</span> :
       {{
         token.owner.substr(0, 5) +
         "..." +
