@@ -107,4 +107,20 @@ export class Web3Blockchain implements Blockchain {
     tokenCount = async () => {
         return (await this.contract.totalSupply()).toNumber();
     };
+
+    getToken = async (index: number) => {
+        const contract = this.contract;
+        let price = await contract.priceOf(index);
+        console.log(price);
+        price = ethers.utils.formatUnits(price, "ether");
+        const token = {
+            id: index,
+            uri: await contract.tokenURI(index),
+            price,
+            owner: await contract.ownerOf(index),
+            forSale: await contract.isForSale(index),
+        };
+        console.log(token);
+        return token;
+    };
 }

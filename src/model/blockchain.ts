@@ -1,3 +1,5 @@
+import { Token } from "./token";
+
 export interface Blockchain {
     init(): Promise<void>;
     chainId(): Promise<string>;
@@ -10,4 +12,5 @@ export interface Blockchain {
     balanceOf(account: string): Promise<number>;
     baseURI(): Promise<string>;
     tokenCount(): Promise<number>;
+    getToken(tokenId: number): Promise<Token>;
 }
