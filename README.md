@@ -1,11 +1,66 @@
-# Vue 3 + Typescript + Vite
+# Early Access Games NFT Marketplace
 
-This template should help get you started developing with Vue 3 and Typescript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+<i>NFT marketplace for Game Maker to provide early access as NFTs.</i>
 
-## Recommended IDE Setup
+#
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+### How to test
 
-## Type Support For `.vue` Imports in TS
+- install metamask.
+- get some ether from eg. https://faucets.chain.link/kovan
+- visit our marketplace https://nft-login.github.io/nft-marketplace/kovan/#/
+- Buy an nft on the market https://nft-login.github.io/nft-marketplace/kovan/#/marketplace
+- If you can login here https://nft-login.github.io/nft-login-demo/kovan/ it worked an you own an nft for this game
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's `.vue` type support plugin by running `Volar: Switch TS Plugin on/off` from VSCode command palette.
+### Run the DApp Locally
+
+#### Install truffle
+
+```
+npm install -g truffle
+```
+
+#### Install ganache-cli
+
+```
+npm i ganache-cli
+```
+
+#### Run ganache-cli
+
+```
+ganache-cli --port 8545
+```
+
+#### Install dependencies
+
+```
+npm install
+```
+
+#### Compile smart contract
+
+```
+truffle compile
+```
+
+#### Deploy smart contract to ganache
+
+```
+truffle migrate
+```
+
+#### Test smart contract
+
+```
+truffle test
+```
+
+#### Start DApp
+
+```
+npm start
+```
+
+- Open metamask browser wallet and connect network to Localhost 8545.
+- Import accounts from ganache-cli into the metamask browser wallet to make transactions on the DApp.
