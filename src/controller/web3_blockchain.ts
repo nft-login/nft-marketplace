@@ -1,4 +1,4 @@
-import { ethers } from "ethers";
+import { ethers, BigNumber } from "ethers";
 
 import { Blockchain } from "../model/blockchain";
 import * as EarlyAccessGame from "../abis/EarlyAccessGame.json";
@@ -51,8 +51,10 @@ export class Web3Blockchain implements Blockchain {
     loadContract = async (contractAddress: string) => {
         const accounts = await window.ethereum?.request({ method: "eth_requestAccounts" });
         const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner()
+        console.log(signer);
         console.log(contractAddress, accounts, provider);
-        this.contract = await new ethers.Contract(contractAddress, EarlyAccessGame.abi, provider)
+        this.contract = await new ethers.Contract(contractAddress, EarlyAccessGame.abi, signer)
         console.log(this.contract);
     };
 
@@ -111,7 +113,6 @@ export class Web3Blockchain implements Blockchain {
     getToken = async (index: number) => {
         const contract = this.contract;
         let price = await contract.priceOf(index);
-        console.log(price);
         price = ethers.utils.formatUnits(price, "ether");
         const token = {
             id: index,
@@ -120,7 +121,23 @@ export class Web3Blockchain implements Blockchain {
             owner: await contract.ownerOf(index),
             forSale: await contract.isForSale(index),
         };
-        console.log(token);
         return token;
     };
+
+    buyToken = async (tokenId: number, price: string): Promise<void> => {
+        return new Promise(async (resolve, reject) => {
+            this.contract.buy(tokenId, { from: await this.account(), value: ethers.utils.parseEther(price) }).then((tx: any) => {
+                tx.wait().then(resolve);
+            }).catch(reject);
+        });
+    };
+
+    toggleForSale = async (tokenId: number): Promise<void> => {
+        return new Promise(async (resolve, reject) => {
+            this.contract.toggleForSale(tokenId, { from: await this.account() }).then((tx: any) => {
+                tx.wait().then(resolve);
+            }).catch(reject);
+        });
+    };
 }
+

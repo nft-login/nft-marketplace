@@ -7,7 +7,7 @@ const numTokens = await store.state.blockchain.tokenCount();
 let indices = Array.from(Array(numTokens).keys());
 let tokens_ = indices.map((id) => store.state.blockchain.getToken(Number(id)));
 let tokens = await Promise.all(tokens_);
-console.log(account, tokens);
+console.table(tokens);
 tokens = tokens.filter((token) => token.owner.toLowerCase() === account.toLowerCase());
 </script>
 

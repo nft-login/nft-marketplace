@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import TokenImage from "./TokenImage.vue";
+import Trade from "./Trade.vue";
 import { useStore } from "../store";
 const props = defineProps<{ id: number }>();
 
 const store = useStore();
 const token = await store.state.blockchain.getToken(Number(props.id));
+const account = await store.state.blockchain.account();
 </script>
 
 <template>
@@ -20,10 +22,8 @@ const token = await store.state.blockchain.getToken(Number(props.id));
         token.owner.slice(token.owner.length - 5)
       }}
     </p>
-    <p>
-      <span className="font-weight-bold">Price</span> :
-      {{ token.price }} Ξ
-    </p>
+    <p><span className="font-weight-bold">Price</span> : {{ token.price }} Ξ</p>
+    <Trade :token="token" :account="account" />
   </div>
 </template>
 
