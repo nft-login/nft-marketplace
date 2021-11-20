@@ -9,7 +9,7 @@ module.exports = {
       network_id: "*", // Match any network id
     },
     kovan: {
-      provider: function() {
+      provider: function () {
         return new HDWalletProvider(
           MNEMONIC,
           `https://kovan.infura.io/v3/${process.env.INFURA_PROJECT_ID}`
@@ -45,8 +45,8 @@ module.exports = {
           `https://alfajores-forno.celo-testnet.org`
         ),
       network_id: 44787,
-      confirmations: 5,
-      timeoutBlocks: 200,
+      confirmations: 1,
+      gas: 20000000,
     },
     polygon: {
       provider: () =>
@@ -58,10 +58,7 @@ module.exports = {
     },
     metis: {
       provider: () =>
-        new HDWalletProvider(
-          MNEMONIC,
-          `https://stardust.metis.io/?owner=588`
-        ),
+        new HDWalletProvider(MNEMONIC, `https://stardust.metis.io/?owner=588`),
       network_id: 588,
     },
   },
