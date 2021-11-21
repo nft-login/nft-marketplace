@@ -51,6 +51,8 @@ Deployed Contract: https://alfajores-blockscout.celo-testnet.org/address/0xBa4e5
 
 ## Theta Blockchain
 
+[![Theta submission](https://img.youtube.com/vi/ipJ_vKRPoWQ/0.jpg)](https://www.youtube.com/watch?v=ipJ_vKRPoWQ)
+
 Demo Game Login if you own a Token: https://nft-login.github.io/nft-login-demo/theta/
 Deployed Contract: https://testnet-explorer.thetatoken.org/account/0x8fb36197889f23e76e68e3fd57c6063a21dde897
 
