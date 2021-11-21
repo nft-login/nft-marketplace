@@ -21,7 +21,8 @@
     "vue-router": "4",
     "vue-spinner": "^1.0.4",
     "vue3-markdown-it": "^1.0.9",
-    "vuex": "^4.0.2"
+    "vuex": "^4.0.2",
+    "web3.storage": "^3.3.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.9.3",
