@@ -61,6 +61,11 @@ module.exports = {
         new HDWalletProvider(MNEMONIC, `https://stardust.metis.io/?owner=588`),
       network_id: 588,
     },
+    theta: {
+      provider: () =>
+        new HDWalletProvider(MNEMONIC, `https://eth-rpc-api-testnet.thetatoken.org/rpc`),
+      network_id: 365,
+    },
   },
   contracts_directory: "./src/contracts/",
   contracts_build_directory: "./src/abis/",

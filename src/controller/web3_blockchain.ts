@@ -39,11 +39,6 @@ export class Web3Blockchain implements Blockchain {
         const accounts = await window.ethereum?.request({ method: "eth_requestAccounts" });
         if (this.provider) {
             console.log("Ethereum successfully detected!");
-            this.provider.on("network", (newNetwork: any, oldNetwork: any) => {
-                if (oldNetwork) {
-                    window.location.reload();
-                }
-            });
         } else {
             console.error("Please install MetaMask!");
         }

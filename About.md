@@ -32,8 +32,9 @@ hash address of the data is stored in the contract.
 
 ## What's next for the project
 
-Next we need to give the frontend a redesign.
+Next we need to give the frontend a redesign to provide a better user experience.
 An extra contract should be created to list all games which provide NFTs.
+Also the frontend was built from scratch.
 
 Connect more chains. Currently connected are:
 
@@ -42,6 +43,11 @@ Connect more chains. Currently connected are:
 - https://nft-login.github.io/nft-login-marketplace/heco/
 - https://nft-login.github.io/nft-login-marketplace/celo/
 - https://nft-login.github.io/nft-login-marketplace/lisk/
+
+## Celo Blockchain
+
+Demo Game Login if you own a Token: https://nft-login.github.io/nft-login-demo/celo/
+Deployed Contract: https://alfajores-blockscout.celo-testnet.org/address/0xBa4e569A5156C00348B89653968c2C294f80E151
 
 ## OKEx Blockchain
 
