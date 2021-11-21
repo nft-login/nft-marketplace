@@ -68,6 +68,11 @@ module.exports = {
       confirmations: 1,
       timeoutBlocks: 5000
     },
+    avax: {
+      provider: () =>
+        new HDWalletProvider(MNEMONIC, `https://api.avax-test.network/ext/bc/C/rpc`),
+      network_id: "43113" // chainID is 43113 but reports 1, replace with *
+    },
   },
   contracts_directory: "./src/contracts/",
   contracts_build_directory: "./src/abis/",

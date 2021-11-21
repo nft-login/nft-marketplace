@@ -52,6 +52,10 @@ Connect more chains. Currently connected are:
 Demo Game Login if you own a Token: https://nft-login.github.io/nft-login-demo/celo/
 Deployed Contract: https://alfajores-blockscout.celo-testnet.org/address/0xBa4e569A5156C00348B89653968c2C294f80E151
 
+## Avalanche Blockchain
+
+Demo Game Login if you own a Token: https://nft-login.github.io/nft-login-demo/avax/
+
 ## Theta Blockchain
 
 [![Theta submission](https://img.youtube.com/vi/ipJ_vKRPoWQ/0.jpg)](https://www.youtube.com/watch?v=ipJ_vKRPoWQ)
