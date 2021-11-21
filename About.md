@@ -49,6 +49,16 @@ Connect more chains. Currently connected are:
 Demo Game Login if you own a Token: https://nft-login.github.io/nft-login-demo/celo/
 Deployed Contract: https://alfajores-blockscout.celo-testnet.org/address/0xBa4e569A5156C00348B89653968c2C294f80E151
 
+## Theta Blockchain
+
+Demo Game Login if you own a Token: https://nft-login.github.io/nft-login-demo/theta/
+Deployed Contract: https://testnet-explorer.thetatoken.org/account/0x8fb36197889f23e76e68e3fd57c6063a21dde897
+
+It was very hard to get TFuel to deploy the contract as there is no faucet for the testnet.
+We tried to deploy to the Mainnet by sending myself some Theta from Binance. But truffle told me it needs 0 Theta but X TFuel.
+We could not find out where to get TFuel.
+But thanks to the community at discord and the theta team we got enough TFuel on the Testnet to deploy the contract.
+
 ## OKEx Blockchain
 
 Visit https://nft-login.github.io/nft-login-marketplace/okt/, login to your metamask and buy a token.

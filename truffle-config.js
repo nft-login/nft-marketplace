@@ -65,6 +65,8 @@ module.exports = {
       provider: () =>
         new HDWalletProvider(MNEMONIC, `https://eth-rpc-api-testnet.thetatoken.org/rpc`),
       network_id: 365,
+      confirmations: 1,
+      timeoutBlocks: 5000
     },
   },
   contracts_directory: "./src/contracts/",
