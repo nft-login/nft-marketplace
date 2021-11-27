@@ -63,15 +63,38 @@ module.exports = {
     },
     theta: {
       provider: () =>
-        new HDWalletProvider(MNEMONIC, `https://eth-rpc-api-testnet.thetatoken.org/rpc`),
+        new HDWalletProvider(
+          MNEMONIC,
+          `https://eth-rpc-api-testnet.thetatoken.org/rpc`
+        ),
       network_id: 365,
       confirmations: 1,
-      timeoutBlocks: 5000
+      timeoutBlocks: 5000,
     },
     avax: {
       provider: () =>
-        new HDWalletProvider(MNEMONIC, `https://api.avax-test.network/ext/bc/C/rpc`),
-      network_id: "43113" // chainID is 43113 but reports 1, replace with *
+        new HDWalletProvider(
+          MNEMONIC,
+          `https://api.avax-test.network/ext/bc/C/rpc`
+        ),
+      network_id: "43113", // chainID is 43113 but reports 1, replace with *
+    },
+    iota: {
+      provider: () =>
+        new HDWalletProvider(MNEMONIC, `https://evm.wasp.sc.iota.org/`),
+      network_id: 1074,
+      timeout: 60000,
+    },
+    binance: {
+      provider: () =>
+        new HDWalletProvider(
+          MNEMONIC,
+          `wss://data-seed-prebsc-2-s1.binance.org:8545/`
+        ),
+      network_id: 97,
+      confirmations: 10,
+      timeoutBlocks: 200,
+      skipDryRun: true
     },
   },
   contracts_directory: "./src/contracts/",
