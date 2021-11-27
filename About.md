@@ -1,6 +1,6 @@
 ## Inspiration
 
-New games often are available as early access. In this phase the game finished, but a fan community can be build and the game designer get already an income.
+New games often are available as early access. In this phase the game is not finished, but a fan community can be build and the game designer get already an income.
 NFTs are a good way to finance game development but also give the fans the ability to show up they founded the game.
 
 ## What it does
