@@ -1,4 +1,4 @@
-import { ethers, BigNumber } from "ethers";
+import { ethers } from "ethers";
 
 import { ContractFactory } from 'ethers';
 import { Blockchain } from "../model/blockchain";

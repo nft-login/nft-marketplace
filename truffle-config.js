@@ -96,6 +96,14 @@ module.exports = {
       timeoutBlocks: 200,
       skipDryRun: true
     },
+    evmos: {
+      provider: () =>
+        new HDWalletProvider(
+          MNEMONIC,
+          `https://evmos-evm-rpc.tk/`
+        ),
+      network_id: "9000",
+    },
   },
   contracts_directory: "./src/contracts/",
   contracts_build_directory: "./src/abis/",
