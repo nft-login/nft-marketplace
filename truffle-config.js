@@ -61,6 +61,11 @@ module.exports = {
         new HDWalletProvider(MNEMONIC, `https://stardust.metis.io/?owner=588`),
       network_id: 588,
     },
+    meter: {
+      provider: () =>
+        new HDWalletProvider(MNEMONIC, `https://rpctest.meter.io/`),
+      network_id: 83,
+    },
     theta: {
       provider: () =>
         new HDWalletProvider(
